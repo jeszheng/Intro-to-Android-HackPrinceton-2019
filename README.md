@@ -18,7 +18,9 @@ Q&A following the workshop is open for deeper questions about Android, questions
 
 **Demo App**
 
-[TODO]
+We will be creating a bare-bones rendition of Tiger Confessions 3.0! (Although it is really just a glorified to-do list that highlights some Android fundamentals). Video demo can be found [here](https://youtu.be/CcK5yyACK6g).
+
+![](https://lh3.googleusercontent.com/7GEmBYbHODIpiHcCLoC1uXhm4uqTxJRh3-kk558s6MiqitPUF3JpiB9lPZmDjjdEImgiwUi-uHldJoLJUML2OL6x3nCk9I1NU652utQaN6A2lSa7QZXyizXr99WmJBuFnE0a_LUDXG2hYFM-ihdFsKT8NpMWOPv0BFci3S3iXCjUISw1lkt2COKrUS4YYLXrcyYMOwVWChT2cacT4ObuCBXXJz719HZ8s55-k1hyYpxMBZ6u6cQq_8Y7a1A9TpvwB9OJhOYZpoUD0yFEjdKa36pJII1tYNgO14113mhABPTYMtdsFP-sxCc8f09vHKhkuQ30RPJyDIU6TXtVSiLUrzWApCdiDc5OIHaOrJvl7G8NirerXHotwLb5gpjf8V11lecFHb1-RnI2wHgYGhp0hdLZ9FAJl6Or2KxQBJiRrENdpmFw5cHM2atpjEMOeg8v-XmruKEYSqTujXoOPx0GX3WWmIKYkqxGx_PglilMrQ034V8Xxec-9Y0u6sZkWyji5adGeODsVc81LtpqkluecnwCbGQIWwj4y7EflEGK45rNo8pv9cmawfvoMid_V3gT_f6KojcTXzMtJzGqdIHGw4dsxZZwIiV3vRTOhnaEiJpOyaJnZu8v4ckGN1via9nHMOcSQdibD-pkWJ2q00DF6EOuKVX52eLjqMhGjbOmSwvRu61MnpdLf8ef=w1754-h1152-no)
 
 
 ## Tutorial Walkthrough
@@ -46,6 +48,15 @@ A [**Layout**](https://developer.android.com/guide/topics/ui/declaring-layout) i
 
 ![](https://developer.android.com/images/viewgroup_2x.png)
 
+### Coding Challenges for this Project
+
+Here are a few ways you could test your development skills and take this app further...
+
+ - (Easy) Add a timestamp to when each confession was posted. 
+ - (Easy) Right now the application looks fine in portrait mode, but not so great in landscape :( -- figure out how to do so! Hint: you will need to create some new layout resource files in a layout-land/ directory within res/ . 
+ - (Medium) Allow for the deletion of confessions.
+ - (Medium) Create a up/down voting system (like reddit?) and sort the list by popularity of votes.
+ - (Harder) Allow for replies and comments to confessions.
 
 ## Additional Resources
 
