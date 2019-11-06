@@ -19,6 +19,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <EditText
+            android:id="@+id/confession_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Enter your confession here..."
+            android:layout_weight="5"/>
+        <ImageButton
+            android:id="@+id/confession_post_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <!-- This ScrollView will hold a LinearLayout containing the confession posts. -->
