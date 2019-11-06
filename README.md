@@ -175,6 +175,97 @@ Resulting activity_main.xml:
 
 This should not result in any visual changes to the application.
 
+### Step 4. Add User Input UI Elements. [[link]](https://github.com/glossiercoder/Intro-to-Android-HackPrinceton-2019/commit/83eee5a202a505a4762d63920ada2785b997f7d0)
+
+#### A. Add an EditText component to accept user input for the confessions.
+
+An  [EditText](https://developer.android.com/reference/android/widget/EditText)  is a user interface element for entering and modifying text.
+
+The **android:hint** attribute is the greyed-out text displayed by default to the user that prompts them to input in the requested information. Here, we set it to "Enter your confession here..."
+
+Note that we specify the **inputType** attribute to be "textMultiLine" -- this will allow us to enter in confessions spanning multiple lines.
+
+Note we give this EditText an id attribute: **android:id="@+id/confession_edit_text"**  -- this will allow us to reference this input field from our Java code later on.
+~~~
+<!-- This linear layout will hold the EditText and Button. -->  
+<LinearLayout  
+  android:layout_width="match_parent"  
+  android:layout_height="wrap_content"  
+  android:orientation="horizontal">  
+    <EditText  
+	  android:id="@+id/confession_edit_text"  
+	  android:layout_width="wrap_content"  
+	  android:layout_height="wrap_content"  
+	  android:inputType="textMultiLine"  
+	  android:hint="Enter your confession here..."/>  
+</LinearLayout>
+~~~
+#### B. Download the "add" icon [here](https://lh3.googleusercontent.com/hsZXZCf2HrYARxKmb-QJtLaQ1dydyU_UZHlaE3CqhYkAm84aqX0koCoz-95HtLaUPZhUKKn_YEd36JIM1DARsxkgNQOljTcRKxyp0Y3jWvFuFRArRVofYgo4jfA0GxfcIfabhj5UstFOmyUoTxXHAFHbuPgRhV7piqki4wVneOHik0nbi1200GoEaLz3Di8EjrMthkBOrFEXIoSmouQogXb_QAqapRUXe8rrDK-YhH6RfpKlBuJ8Gghb_15hhY9bUg7dGtLQW9SeyFZazOXBcVIXbu_ReNLiUmyLKtBXJYL-_2LnCT7qU2vjVhL3orB8uaHD6QbJDmNi3aaVU6D-uBJhOtK8_kupvrxGzIBBoP58LNg377VXI1QZB2gnMvd8eXA14bY90lMEM_Kzf20gsnZOKWbhNRn_cD67jzk0NvqhiGr-GZWuxlPGYAnQKTPwDwwMujHTvWBop39TW5zv7ilwJt4-Q7kRBeCvP6L1YRP7Ik7DeaTSXq4VXM2Pajlakzd8WXYgLO_91Spn1MMm_7LfhfDsgTmyukgcmI7j0aQLIQrK3U8LV9SRzE1YCVCEFeCUUf3fvwx4DlBW75IMsp1Tv1GJk4aZcW09TGh4ycOdV9YGd0gNJA09WPBMjCKDtlsh6YaqhcDPsEhjJopFJbnzYpf3VHXMrYLL02JUuOZ5euiBrDwAQeiuTjMaJRF_26Es6Th9MkrP3KywFLUkhreHNdYh8TS5HkbnqILsYngmyqEyRg=s36-no) and add it to the res/drawable resource folder.
+
+The image should be named **add.png**
+![](https://lh3.googleusercontent.com/hsZXZCf2HrYARxKmb-QJtLaQ1dydyU_UZHlaE3CqhYkAm84aqX0koCoz-95HtLaUPZhUKKn_YEd36JIM1DARsxkgNQOljTcRKxyp0Y3jWvFuFRArRVofYgo4jfA0GxfcIfabhj5UstFOmyUoTxXHAFHbuPgRhV7piqki4wVneOHik0nbi1200GoEaLz3Di8EjrMthkBOrFEXIoSmouQogXb_QAqapRUXe8rrDK-YhH6RfpKlBuJ8Gghb_15hhY9bUg7dGtLQW9SeyFZazOXBcVIXbu_ReNLiUmyLKtBXJYL-_2LnCT7qU2vjVhL3orB8uaHD6QbJDmNi3aaVU6D-uBJhOtK8_kupvrxGzIBBoP58LNg377VXI1QZB2gnMvd8eXA14bY90lMEM_Kzf20gsnZOKWbhNRn_cD67jzk0NvqhiGr-GZWuxlPGYAnQKTPwDwwMujHTvWBop39TW5zv7ilwJt4-Q7kRBeCvP6L1YRP7Ik7DeaTSXq4VXM2Pajlakzd8WXYgLO_91Spn1MMm_7LfhfDsgTmyukgcmI7j0aQLIQrK3U8LV9SRzE1YCVCEFeCUUf3fvwx4DlBW75IMsp1Tv1GJk4aZcW09TGh4ycOdV9YGd0gNJA09WPBMjCKDtlsh6YaqhcDPsEhjJopFJbnzYpf3VHXMrYLL02JUuOZ5euiBrDwAQeiuTjMaJRF_26Es6Th9MkrP3KywFLUkhreHNdYh8TS5HkbnqILsYngmyqEyRg=s36-no)
+
+
+#### C. Add an ImageButton component to allow the user to submit confessions.
+
+An [ImageButton](https://developer.android.com/reference/android/widget/ImageButton) is a button with an image (instead of text) that can be pressed or clicked by the user. 
+
+Note we give this ImageButton an id attribute: **android:id="@+id/confession_post_button"**  -- this will allow us to reference this input field from our Java code later on.
+
+Note that we set the src attribute to **@drawable/add** so the ImageButton can reference add.png
+~~~
+<LinearLayout  
+  android:layout_width="match_parent"  
+  android:layout_height="wrap_content"  
+  android:layout_marginHorizontal="10dp"  
+  android:orientation="horizontal">  
+    <EditText  
+	  android:id="@+id/confession_edit_text"  
+	  android:layout_width="wrap_content"  
+	  android:layout_height="wrap_content"  
+	  android:inputType="textMultiLine"  
+	  android:hint="Enter your confession here..."/>  
+    <ImageButton  
+	  android:id="@+id/confession_post_button"  
+	  android:layout_width="wrap_content"  
+	  android:layout_height="wrap_content"  
+	  android:src="@drawable/add"/>  
+</LinearLayout>
+~~~
+
+Now the app should look like this:
+![](https://lh3.googleusercontent.com/nD9f2pOhCTJsajEMBQVnZRY7XPVdJ4HvzY_5m6OA363zoY9Pn3_UnCg6p1LosaINpQ9-7RCVtCKWpKNKWVolQ5HGguWhHfFcplaOYTOtuT34rNO8UC9vQvJd6xH1bcom0kyZ4yA0xcfvoViWsMX1nRc2Qj9zc5-c7Cfp_9_PE8oxpJWgtnPPHx61PvSkz9JFz41Iflr-14_ICfsV3euixkURqayIzY-G3zmoXmniNETKKNzJC20JQ5gDrha0BJk-HJlRVx8TcRhiSB6TLtAvIzhhrCCphR9AZe4y1sSonXGqBh-rO2Nv6TPh2w-jYqtpMdIXNnZl0ET0v9VT6yFNwi6H2Kq8GjIyYRcVK7sPllNQ2ET_PmwQYBoUZ67w4ZfSu98fGv5YROc848cko4E9z9_8o2O2RcugfUCpHFemnN4Ech74vHuCMs4tMsdT6tmZ7TakgO7FRc_AiXhbP-COO0xf2snxsN06xxlREJlvT8Ys-ZuHxixFx6tiXgHf0gfwJkTsEoAwB36yvR9tVeWQfgV1lwz5mbELQFH_lEfJpUise8mmqmr90Mv8EL2n_5UZvTcE1sjpDN_eizRS7HilMARpvc6gpkBD0F0XvdFJPatf_u7eXRcP_lLW6-5fX_K-4BQau_emG0WR-RXpl40NqjoquIx07seJQsG04i0MgXPRZaBxLZooo8YOQpMeGjB1IUnBN-zJj7lE68iJ_R2-ipP8195QSwHo84IvBCIcdREsxfMK0A=w3082-h1762-no)
+
+#### D. Introduce layout_weight attribute.
+
+In the screenshot above, we see that the EditText and ImageButton do not take up the entire width of the screen. And if they were to take up the entire screen, how much space should one element take up relative to the other?
+
+We can solve both issues by using the [layout_weight](https://developer.android.com/reference/android/widget/LinearLayout.LayoutParams.html#attr_android:layout_weight) attribute that is available to the children inside of a LinearLayout -- this tells us how much space each element should take up relative to the others in the same LinearLayout.
+
+Here, we give confession_edit_text a weight of 5, and confession_post_button a weight of 1. This means that on the screen, the confession_edit_text will take up 5 times as much horizontal width as confession_post_button.
+~~~
+<!-- This linear layout will hold the EditText and Button. -->  
+<LinearLayout  
+  android:layout_width="match_parent"  
+  android:layout_height="wrap_content"  
+  android:orientation="horizontal">  
+    <EditText  
+	  android:id="@+id/confession_edit_text"  
+	  android:layout_width="wrap_content"  
+	  android:layout_height="wrap_content"  
+	  android:inputType="textMultiLine"  
+	  android:hint="Enter your confession here..."  
+	  android:layout_weight="5"/>  
+    <ImageButton  
+	  android:id="@+id/confession_post_button"  
+	  android:layout_width="wrap_content"  
+	  android:layout_height="wrap_content"  
+	  android:src="@drawable/add"  
+	  android:layout_weight="1"/>  
+</LinearLayout>
+~~~
+![](https://lh3.googleusercontent.com/dVBqg84n89iq-INq0GB6fGcTEcL35mdU5HDSQL9yYkARaIfbPb0--Uyw_SYBpB8zk87lsRTv4yfQYlzh3tH8PJQyfqGJuUvCc4HhTHt3MAatgF7IqnKPkxrcNzbi1DN7munt7VB9ubrKbiD22rrQaNXoKW3M_8xAKAwS0jqxoxlv1qeWcImfT3amZcUMKHOfLBVcJYeDD7XtMxoLdlRIrQ61VWEvFtOtsNVH-2euSeqieCmMiVryhOli0xNSZfB84-G-bG0wWZ-bfUnoDtp7HZLCYBEhNfP7FJJqicbYNDRWVD6TcgmblxVUc_tL5xf6P-fnkN9Kyw_b9nrZZfg4EXvCIcAJq2axUtLDEHX7G1QHn9jFtSV_QuvKArbKjWOF00eso0wRnHGsAdvXogJ5H5XysBx5m_MxxFAuWUpp1_dO9Pupic-rEjUDs5WnHABUs9cerdFukCyWn5FJdKEkt9v1MotmYDMuOxXlBhGTDd-mZ04x3Yi1LZzD_6aSbaJ_zFHMRUoxGWyCYHg_EldoDt9_oLwXttz5HAP7XLpF3IfPTK26SyglJCqMCNw5XM7uhH-_oVo50Uby880W_2QZWhLP4puMRNBAEbv-7M2qFyy7pMPbCb6aZ7e7C2Z_IH0NyQdY9c0aewcc3G997uPKr5Y6rlHVHATdxO4lr-vnISPpMHdp2YWZdVSq=w3094-h1750-no)
+
 ### Coding Challenges for this Project
 
 Here are a few ways you could test your development skills and take this app further...
