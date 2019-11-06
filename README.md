@@ -121,6 +121,60 @@ Resulting activity_xml:
 Your application should now look like this:
 ![](https://lh3.googleusercontent.com/yDOVHJiZMVztFUG7oQyeF6-BaFVgl2BH8oNA0F8DyXAxR9Py-rih_aPx-dQOMPxMqEKo7FywlchG7CUuPd6KEFBcUYu8gjmvOUgoHGkaQvHJd7MnewYF2arbQolRGq34RDCMpOWkbLU6ET72izAfqNho6BPvKTgvgwUSfytZ2W058DGt3UxsadZrE9N9Xuxsu_IvUH_1Akl-_f1u7-TC6BH-nAfTBqcJSQlN7OR1W7k6st2cBEV6NF6wuqTZ2OUeN3FhWYJneRFin6m2kDJSBku53qejUgKcFOx5hGmyVs5_o-IrwWHDk_0EXKwHOOOV5Crz5zjIOglJLhLlZ62sx4ZLs4fOuB7ZDfAAhVAZuHzytSLXEjKS_nZoEmkJENgchcDINjmYIiN8dtkEWKJM3XMpk2rD5W2Pv8hCwc3oqyA_HTvBIo_AyB7xE5jd_4iGmErs4I9nXZ0CIn6ehq5AbY28xgM1hEsVxOaZZ1e3PfaHCvVe7R49_oZe6C4UFV0wuHNa_7C4eKmiDzSthnOH4cRey9AZ7lXUCZzz4Zp_xvc3KG6xOEAWnRlHfwadRWpsvRqyVuWTxHee3mamvILVmzgo8N7I6J8M5hLt5uvgHwJpzFTh9kbeVhXTszPysSHhmeL1z3kXMhXB0aOw-Fnd7VDKabwbtD4RB99ptRkBt0bY4dg5UealExp-z43Y5spbX3mEsnhNmCIsDFVJMPB6lNyFv59ac5T_Ucfst3sqWdNsCPTI3g=w2964-h1770-no)
 
+### Step 3. Create Layouts for User Input and Confession Posts [[link]](https://github.com/glossiercoder/Intro-to-Android-HackPrinceton-2019/commit/21f288b99e5e4cff61b4f1d63fbc53306041e381)
+
+#### A. Add LinearLayouts and ScrollView for our page elements.
+
+An Android  [ScrollView](https://developer.android.com/reference/android/widget/ScrollView)  is a  [ViewGroup](https://developer.android.com/reference/android/view/ViewGroup.html)  that allows the view hierarchy placed within it to be scrolled. Scroll view may have only one direct child placed within it.
+
+However, we want multiple views within the  [ScrollView](https://developer.android.com/reference/android/widget/ScrollView), so we can solve this issue by making the single child a  [LinearLayout](https://developer.android.com/reference/android/widget/LinearLayout).
+
+1. Create a Linear Layout to hold the user input UI elements (EditText and Button). Note that we set the orientation attribute to be "horizontal" as the elements will be laid out horizontally.
+2. Add ScrollView containing a LinearLayout to hold the confession posts. Note that the LinearLayout orientation attribute is set to "vertical."
+
+Resulting activity_main.xml:
+~~~
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout  
+	  xmlns:android="http://schemas.android.com/apk/res/android"  
+	  xmlns:app="http://schemas.android.com/apk/res-auto"  
+	  xmlns:tools="http://schemas.android.com/tools"  
+	  android:layout_width="match_parent"  
+	  android:layout_height="match_parent"  
+	  android:orientation="vertical"  
+	  tools:context=".MainActivity">  
+	  <ImageView 
+		  android:layout_width="wrap_content"  
+		  android:layout_height="180dp"  
+		  android:src="@drawable/tigercat"  
+		  android:layout_gravity="center_horizontal"/>  
+	  
+	  <!-- This linear layout will hold the EditText and Button.-->
+	  <LinearLayout  
+		  android:layout_width="match_parent"  
+		  android:layout_height="wrap_content"
+		  android:orientation="horizontal">  
+		  <!-- Edit Text and Button will go here -->
+	  </LinearLayout>  
+	  
+	  <!-- This ScrollView will hold a LinearLayout containing the confession posts. -->  
+	  <ScrollView  
+		  android:layout_height="match_parent"
+		  android:layout_width="match_parent">  
+		  <!-- This LinearLayout will hold the confession posts. ->
+		  <LinearLayout  
+			  android:id="@+id/confession_list"  
+			  android:layout_width="match_parent"  
+			  android:layout_height="match_parent"  
+			  android:orientation="vertical"  
+			  tools:context=".MainActivity">  
+        </LinearLayout>  
+    </ScrollView>  
+</LinearLayout>
+~~~
+
+This should not result in any visual changes to the application.
+
 ### Coding Challenges for this Project
 
 Here are a few ways you could test your development skills and take this app further...
