@@ -33,9 +33,94 @@ If you have a physical Android phone to test with, follow the setup instructions
 
 #### A. Getting Started
 
-Open Android Studio, start a new project, and choose "Empty Activity". Name the project a cool name like "TigerConfessions3.0". Click finish, and wait for the Gradle Sync and build to complete.
+Open Android Studio, start a new project, and choose "Empty Activity". Name the project a cool name like "TigerConfessions". Click finish, and wait for the Gradle Sync and build to complete. When building and running the app, this is what you should get:
+![](https://lh3.googleusercontent.com/Zf02C4Oo39yHTGNtSjhiO0hmdqeGxJpRbcQNtISy43tu6qd3yEVF3La1dWcK__sfSzDa4H-SQORPreLzPy2U7nFWlXC2BBjSUXYEbkzWSofinPGLJ8oGip4srhVTIVsSfb0YVdmo-3wo6HQL_3vpigUHkfA_uTYZYdPbc7skuj8LINQlj5XCH0UYJGMb8N1iIZwF_5yiCTk5svlpqKbgr8MNQchB8rf9q57FsFGCxzQ5fIj8JtY78ossyPyXRhl0S_MXVE7Vt_eToCgUDMkaoHxc8ZnThV-QVpJwxAVhvR8Hs1X9VpXscgsSN_72Yl3LZVQnn0fljeQOFSb6xzvkqdPZYKr7ycy4YJU37FxrRFdjZRAgPMOuKg3LYvh5tIRUrCsrTIhH2ippxjveDkhXJ1RUrM6kwMHslTNrnj3Py_weXnpgqahrDKDPSG_sKNdo1Kkl65G5B41fEGKsW6oZDTMQG_Ju0LJepT6QmiRZVhfmxDIzMtB8fQLGpN3odQvhkg4TqXAiUNnN471nLdz7MB1bANMyUIfKBBMRKT1he3s5k-tIJL5PjSIVKe9J4f4vIpK_-D6GZpr82n3zD2yf5RGWsg3PQ8oRFrwXXon5G2tx14Yz8ju-ONWl09v3tzANakmeO_-r7-NSBA7YBchQ7TQRFi-_dkosVDPwOASkvu3G7fEveNXnZXci8NoBqscOAmwSi1q29E_WGfm-SAmPOUvunkMYDrGtCzHvJqqA1SqGc8fSvA=w3006-h1686-no)
 
-[TODO]
+#### B. Some background on the structure of Android Applications:
+
+An [**Activity**](https://developer.android.com/reference/android/app/Activity) is a single, focused thing that the user can do. Almost all activities interact with the user, so the Activity class takes care of creating a window for you in which you can place your UI. In most cases, activities are often presented to the user as full-screen windows, so for now you can think of activities as "pages" in an application.
+
+A [**View**](https://developer.android.com/reference/android/view/View) is the basic building block for user interface components. A View occupies a rectangular area on the screen and is responsible for drawing and event handling. View is the base class for _widgets_, which are used to create interactive UI components ([Button](https://developer.android.com/reference/android/widget/Button), [TextView](https://developer.android.com/reference/android/widget/TextView.html), [ScrollView](https://developer.android.com/reference/android/widget/ScrollView), [EditText](https://developer.android.com/reference/android/widget/EditText), [RecyclerView](https://developer.android.com/reference/android/support/v7/widget/RecyclerView) etc). You can even create custom views. Views can encapsualte one another.
+
+A [**Layout**](https://developer.android.com/guide/topics/ui/declaring-layout) is how you organize your views within an Activity.  A layout defines the structure for a user interface in your app, such as in an [activity](https://developer.android.com/guide/components/activities.html). All elements in the layout are built using a hierarchy of [View](https://developer.android.com/reference/android/view/View.html) and [ViewGroup](https://developer.android.com/reference/android/view/ViewGroup.html) objects.
+
+![](https://developer.android.com/images/viewgroup_2x.png)
+
+
+### Step 2. Linear Layout and Image View
+
+
+#### A. Change the constraint layout to a linear layout in activity_main.xml
+
+A [`ConstraintLayout`](https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout.html) allows you to create large and complex layouts with a flat view hierarchy (no nested view groups), but it is more complex than what we need. We will use a [LinearLayout](https://developer.android.com/reference/android/widget/LinearLayout.html) instead. A LinearLayout is a view group that aligns all children in a single direction, vertically or horizontally.
+
+1. Change the ConstraintLayout to LinearLayout
+2. Add android:orientation="vertical" attribute in the LinearLayout. For a [LinearLayout](https://developer.android.com/reference/android/widget/LinearLayout.html) it is good practice to explicitly specify the layout direction with the  [`android:orientation`](https://developer.android.com/reference/android/widget/LinearLayout.html#attr_android:orientation)  attribute. 
+
+Resulting activity_xml:
+~~~
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout  
+  xmlns:android="http://schemas.android.com/apk/res/android"  
+  xmlns:app="http://schemas.android.com/apk/res-auto"  
+  xmlns:tools="http://schemas.android.com/tools"  
+  android:layout_width="match_parent"  
+  android:layout_height="match_parent"
+  android:orientation="vertical"  
+  tools:context=".MainActivity">  
+    <TextView  
+		  android:layout_width="wrap_content"  
+		  android:layout_height="wrap_content"  
+		  android:text="Hello World!"  
+		  app:layout_constraintBottom_toBottomOf="parent"  
+		  app:layout_constraintLeft_toLeftOf="parent"  
+		  app:layout_constraintRight_toRightOf="parent"  
+		  app:layout_constraintTop_toTopOf="parent" />  
+</LinearLayout>
+~~~
+
+#### B. Delete the TextView in activity_xml
+Resulting activity_xml:
+~~~
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout  
+  xmlns:android="http://schemas.android.com/apk/res/android"  
+  xmlns:app="http://schemas.android.com/apk/res-auto"  
+  xmlns:tools="http://schemas.android.com/tools"  
+  android:layout_width="match_parent"  
+  android:layout_height="match_parent"
+  android:orientation="vertical"  
+  tools:context=".MainActivity">  
+</LinearLayout>
+~~~
+#### C. Add an image to the res/drawable folder to serve as the banner.
+It is the convention in Android to place drawable resources into res/drawable folder. Here is the image I used. Save it as "tigercat.png".
+![](https://lh3.googleusercontent.com/DNCbbh_lWJukf50-Hclu3NOvNEV_X6vEQXPZ-AB0j7DHYkds5LrITw_tO373Cjf_ESWXDOHD4TDmKpM3zVWwSErazv3MO0kQs84MU44xnrgCLof2On6XbZ_JkpJ7RXdFnCUMremjxFKJGeg1zjT2LnPyJBednySuovDQKA0gpeyqZ4OwAWbdR1wIftoDeg4ecZNyAoXrX4G7RQfYEGjegcIShQC-GoAeaTElG17ojDVC-aCHWcMncHEFQRfItIic0t98E3NO6oOnosKiov_ffgUz_1RjOLy4i1cUsO2JAt3DSmsoqS8izvXUc26IBvjYO4-VUglsogZN_NprDfdPTQn6pTZ6scN2DWuHrIwl7hC-J6UA1nQ1ACEgt_n1Ei3oxhLqOLSwLECwy1t_CQbHH5QYHxUgjEBLEt0isGosSg1UE6Qaq4-_eNkqeWTYYyjP3N08iluZNLdu7r1gbzJB2BEYDJeVnABj184XUHHfXCbch87HbIaGCaE40oVX8yvULW-Xpk10uh636FnfTey4HgOKkuJjQRCcKAOVPhTcaUZIytjcp7E6W3D6XRZ-brsVDgSI5Pi4Y6L9QjEB1ZQ9bix0PXH5kc8HmzUVnyIFYIUp7X8lgf4m18wgzXIeWypdflCp2iD9obYQ4Jbue8chEOwHNvgn34qOkOiN9_CWn3GBQ-ke7X_x3C3UkokfmbeBYF5h4qRZH9b_ib0l4nqN_JAQJxazEbmLrkBkPdXFoEgDPQLY5Q=w2563-h1125-no)
+
+#### D. Add the ImageView that will show the image in activity_xml
+Resulting activity_xml:
+~~~
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout  
+  xmlns:android="http://schemas.android.com/apk/res/android"  
+  xmlns:app="http://schemas.android.com/apk/res-auto"  
+  xmlns:tools="http://schemas.android.com/tools"  
+  android:layout_width="match_parent"  
+  android:layout_height="match_parent"  
+  android:orientation="vertical"  
+  tools:context=".MainActivity">  
+    <ImageView  
+	  android:layout_width="wrap_content"  
+	  android:layout_height="180dp"  
+	  android:src="@drawable/tigercat"  
+	  android:layout_gravity="center_horizontal"  
+	  />  
+</LinearLayout>
+~~~
+
+Your application should now look like this:
+![](https://lh3.googleusercontent.com/yDOVHJiZMVztFUG7oQyeF6-BaFVgl2BH8oNA0F8DyXAxR9Py-rih_aPx-dQOMPxMqEKo7FywlchG7CUuPd6KEFBcUYu8gjmvOUgoHGkaQvHJd7MnewYF2arbQolRGq34RDCMpOWkbLU6ET72izAfqNho6BPvKTgvgwUSfytZ2W058DGt3UxsadZrE9N9Xuxsu_IvUH_1Akl-_f1u7-TC6BH-nAfTBqcJSQlN7OR1W7k6st2cBEV6NF6wuqTZ2OUeN3FhWYJneRFin6m2kDJSBku53qejUgKcFOx5hGmyVs5_o-IrwWHDk_0EXKwHOOOV5Crz5zjIOglJLhLlZ62sx4ZLs4fOuB7ZDfAAhVAZuHzytSLXEjKS_nZoEmkJENgchcDINjmYIiN8dtkEWKJM3XMpk2rD5W2Pv8hCwc3oqyA_HTvBIo_AyB7xE5jd_4iGmErs4I9nXZ0CIn6ehq5AbY28xgM1hEsVxOaZZ1e3PfaHCvVe7R49_oZe6C4UFV0wuHNa_7C4eKmiDzSthnOH4cRey9AZ7lXUCZzz4Zp_xvc3KG6xOEAWnRlHfwadRWpsvRqyVuWTxHee3mamvILVmzgo8N7I6J8M5hLt5uvgHwJpzFTh9kbeVhXTszPysSHhmeL1z3kXMhXB0aOw-Fnd7VDKabwbtD4RB99ptRkBt0bY4dg5UealExp-z43Y5spbX3mEsnhNmCIsDFVJMPB6lNyFv59ac5T_Ucfst3sqWdNsCPTI3g=w2964-h1770-no)
+
 
 
 #### B. Some background on the structure of Android Applications:
