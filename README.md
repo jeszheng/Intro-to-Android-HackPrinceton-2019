@@ -20,7 +20,7 @@ Q&A following the workshop is open for deeper questions about Android, questions
 
 We will be creating a bare-bones rendition of Tiger Confessions 3.0! (Although it is really just a glorified to-do list that highlights some Android fundamentals). Video demo can be found [here](https://youtu.be/CcK5yyACK6g).
 
-![](https://lh3.googleusercontent.com/7GEmBYbHODIpiHcCLoC1uXhm4uqTxJRh3-kk558s6MiqitPUF3JpiB9lPZmDjjdEImgiwUi-uHldJoLJUML2OL6x3nCk9I1NU652utQaN6A2lSa7QZXyizXr99WmJBuFnE0a_LUDXG2hYFM-ihdFsKT8NpMWOPv0BFci3S3iXCjUISw1lkt2COKrUS4YYLXrcyYMOwVWChT2cacT4ObuCBXXJz719HZ8s55-k1hyYpxMBZ6u6cQq_8Y7a1A9TpvwB9OJhOYZpoUD0yFEjdKa36pJII1tYNgO14113mhABPTYMtdsFP-sxCc8f09vHKhkuQ30RPJyDIU6TXtVSiLUrzWApCdiDc5OIHaOrJvl7G8NirerXHotwLb5gpjf8V11lecFHb1-RnI2wHgYGhp0hdLZ9FAJl6Or2KxQBJiRrENdpmFw5cHM2atpjEMOeg8v-XmruKEYSqTujXoOPx0GX3WWmIKYkqxGx_PglilMrQ034V8Xxec-9Y0u6sZkWyji5adGeODsVc81LtpqkluecnwCbGQIWwj4y7EflEGK45rNo8pv9cmawfvoMid_V3gT_f6KojcTXzMtJzGqdIHGw4dsxZZwIiV3vRTOhnaEiJpOyaJnZu8v4ckGN1via9nHMOcSQdibD-pkWJ2q00DF6EOuKVX52eLjqMhGjbOmSwvRu61MnpdLf8ef=w1754-h1152-no)
+![](https://lh3.googleusercontent.com/22hZ-qj_qiRHJBjCqJmSX_oE4jgfN-OusMETi76HzvrfWD48impGqrXsQAOjsAivSVoc3VS83pTDHmCcz-y5ZqKbHkTCnRkWMoWgpFL6FGr1fHjjBGeD4pc1RfhY4G3cMmh9uW9WNkLRSq4J7VgP_oGyAqASDFnlxaUhw6QDXQ6jJRPZ0ARzaCYs7LEHvkYnXxWwekZiejsIvxlApk6nmch3hBlgsLn0FC7-nuzK-lxZocV_JNBD7STBWxjz0sPQFGQrlFUyXKBCSrXZbtgsKT7UXTVEeIsiIMVwzBjpvMBYjmAk2WoAIZLLgUL9cO9kZ828S_Aap0rU22u3AKO_Gq05e27PqY16hqASJvWXnmeyHEpA1ZMijki3G5xYTgj1rt4TN6feSUREtFsQ6RQ1cae7Wi6SLzt1jUG2YXyLkdw68vcyUqv8nRec76GOOpOoxXcnhkzbiW6Myl5V7vPnFp6Lqf-cpQxS3zAZZdAZy9ceGNRtp-kA1WXmOCWCUfqt2S4T_1jm74JTf1PmARq2WCrCACaZ_RhSSNIEeCFwspPi9K3IPxlWlkh5UDT9iAzrgvtMmBWB63vWaUUP2iKBFVNZrtG1HDYsD5Xu7H_btF84LtYkJZyvxd2S2lgtiNuXlchw4vGpw9165fanYdvYemfCMCbFotob3Bv1yTcQr_XE34suoU41grJyYP5f14hcP4cdstPbUI2_UCYzNSf6_It6vtQCgdl7qk5BEue9VayhIAi_Ew=w2000-h1358-no)
 
 
 ## Tutorial Walkthrough
@@ -98,6 +98,9 @@ It is the convention in Android to place drawable resources into res/drawable fo
 ![](https://lh3.googleusercontent.com/DNCbbh_lWJukf50-Hclu3NOvNEV_X6vEQXPZ-AB0j7DHYkds5LrITw_tO373Cjf_ESWXDOHD4TDmKpM3zVWwSErazv3MO0kQs84MU44xnrgCLof2On6XbZ_JkpJ7RXdFnCUMremjxFKJGeg1zjT2LnPyJBednySuovDQKA0gpeyqZ4OwAWbdR1wIftoDeg4ecZNyAoXrX4G7RQfYEGjegcIShQC-GoAeaTElG17ojDVC-aCHWcMncHEFQRfItIic0t98E3NO6oOnosKiov_ffgUz_1RjOLy4i1cUsO2JAt3DSmsoqS8izvXUc26IBvjYO4-VUglsogZN_NprDfdPTQn6pTZ6scN2DWuHrIwl7hC-J6UA1nQ1ACEgt_n1Ei3oxhLqOLSwLECwy1t_CQbHH5QYHxUgjEBLEt0isGosSg1UE6Qaq4-_eNkqeWTYYyjP3N08iluZNLdu7r1gbzJB2BEYDJeVnABj184XUHHfXCbch87HbIaGCaE40oVX8yvULW-Xpk10uh636FnfTey4HgOKkuJjQRCcKAOVPhTcaUZIytjcp7E6W3D6XRZ-brsVDgSI5Pi4Y6L9QjEB1ZQ9bix0PXH5kc8HmzUVnyIFYIUp7X8lgf4m18wgzXIeWypdflCp2iD9obYQ4Jbue8chEOwHNvgn34qOkOiN9_CWn3GBQ-ke7X_x3C3UkokfmbeBYF5h4qRZH9b_ib0l4nqN_JAQJxazEbmLrkBkPdXFoEgDPQLY5Q=w2563-h1125-no)
 
 #### D. Add the ImageView that will show the image in activity_xml
+
+Note that we set the src attribute to **@drawable/tigercat** so the ImageView can reference tigercat.png
+
 Resulting activity_xml:
 ~~~
 <?xml version="1.0" encoding="utf-8"?>  
@@ -113,8 +116,7 @@ Resulting activity_xml:
 	  android:layout_width="wrap_content"  
 	  android:layout_height="180dp"  
 	  android:src="@drawable/tigercat"  
-	  android:layout_gravity="center_horizontal"  
-	  />  
+	  android:layout_gravity="center_horizontal"/>  
 </LinearLayout>
 ~~~
 
@@ -130,7 +132,7 @@ An Android  [ScrollView](https://developer.android.com/reference/android/widget/
 However, we want multiple views within the  [ScrollView](https://developer.android.com/reference/android/widget/ScrollView), so we can solve this issue by making the single child a  [LinearLayout](https://developer.android.com/reference/android/widget/LinearLayout).
 
 1. Create a Linear Layout to hold the user input UI elements (EditText and Button). Note that we set the orientation attribute to be "horizontal" as the elements will be laid out horizontally.
-2. Add ScrollView containing a LinearLayout to hold the confession posts. Note that the LinearLayout orientation attribute is set to "vertical."
+2. Add ScrollView containing a LinearLayout to hold the confession posts. Note that (1) the LinearLayout orientation attribute is set to "vertical." (2) we give this linear layout an id attribute: **android:id="@+id/confession_list"**  -- this will allow us to reference this layout from our Java code later on.
 
 Resulting activity_main.xml:
 ~~~
@@ -266,15 +268,98 @@ Here, we give confession_edit_text a weight of 5, and confession_post_button a w
 ~~~
 ![](https://lh3.googleusercontent.com/dVBqg84n89iq-INq0GB6fGcTEcL35mdU5HDSQL9yYkARaIfbPb0--Uyw_SYBpB8zk87lsRTv4yfQYlzh3tH8PJQyfqGJuUvCc4HhTHt3MAatgF7IqnKPkxrcNzbi1DN7munt7VB9ubrKbiD22rrQaNXoKW3M_8xAKAwS0jqxoxlv1qeWcImfT3amZcUMKHOfLBVcJYeDD7XtMxoLdlRIrQ61VWEvFtOtsNVH-2euSeqieCmMiVryhOli0xNSZfB84-G-bG0wWZ-bfUnoDtp7HZLCYBEhNfP7FJJqicbYNDRWVD6TcgmblxVUc_tL5xf6P-fnkN9Kyw_b9nrZZfg4EXvCIcAJq2axUtLDEHX7G1QHn9jFtSV_QuvKArbKjWOF00eso0wRnHGsAdvXogJ5H5XysBx5m_MxxFAuWUpp1_dO9Pupic-rEjUDs5WnHABUs9cerdFukCyWn5FJdKEkt9v1MotmYDMuOxXlBhGTDd-mZ04x3Yi1LZzD_6aSbaJ_zFHMRUoxGWyCYHg_EldoDt9_oLwXttz5HAP7XLpF3IfPTK26SyglJCqMCNw5XM7uhH-_oVo50Uby880W_2QZWhLP4puMRNBAEbv-7M2qFyy7pMPbCb6aZ7e7C2Z_IH0NyQdY9c0aewcc3G997uPKr5Y6rlHVHATdxO4lr-vnISPpMHdp2YWZdVSq=w3094-h1750-no)
 
+### Step 5. Finishing touches on the UI. [[link]](https://github.com/glossiercoder/Intro-to-Android-HackPrinceton-2019/commit/9793e73b543d97799b2214cd2ed2fc0922c2aaa7)
+
+#### A. Update colorPrimary and colorAccent in res/values/colors.xml
+
+The file colors.xml defines the values of color variables used in the application. You'll notice that **colorPrimary** controls the background color of the App header (which currently is a Turquoise blue).
+
+Believe it or not, there is officially a color called ["Princeton Orange"](https://www.colorhexa.com/ff8f00) with a hex value of #ff8f00.
+
+Let's also add in a golden yellow called ["Selective Yellow"](https://www.colorhexa.com/ffba00) to serve as the accent color.
+~~~
+<?xml version="1.0" encoding="utf-8"?>  
+<resources>  
+	<color name="colorPrimary">#ff8f00</color> <!-- princeton orange -->  
+	<color name="colorPrimaryDark">#00574B</color>  
+    <color name="colorAccent">#ffba00</color> <!-- golden yellow -->  
+</resources>
+~~~
+
+#### B. Set the background color of confession_post_button to colorAccent.
+
+~~~
+<ImageButton  
+	  android:id="@+id/confession_post_button"  
+	  android:layout_width="wrap_content"  
+	  android:layout_height="wrap_content"  
+	  android:src="@drawable/add"  
+	  android:background="@color/colorAccent"  
+	  android:layout_weight="1"/>
+~~~
+
+#### C. Add margin_horizontal and marginTop to the LinearLayout containing the EditText and ImageButton.
+
+We set  **android:layout_marginHorizontal="10dp"**  and **android:layout_marginTop="5dp"**. This will add a 10dp border to the left and right side of the layout, and 5dp at the top of the layout, which looks better visually.
+
+~~~
+<!-- This linear layout will hold the EditText and Button. -->  
+<LinearLayout  
+  android:layout_width="match_parent"  
+  android:layout_height="wrap_content"  
+  android:layout_marginHorizontal="10dp" 
+  android:layout_marginTop="5dp" 
+  android:orientation="horizontal">  
+	    <EditText  
+			  android:id="@+id/confession_edit_text"  
+			  android:layout_width="wrap_content"  
+			  android:layout_height="wrap_content"  
+			  android:inputType="textMultiLine"  
+			  android:hint="Enter your confession here..."  
+			  android:layout_weight="5"/>  
+	    <ImageButton  
+			  android:id="@+id/confession_post_button"  
+			  android:layout_width="wrap_content"  
+			  android:layout_height="wrap_content"  
+			  android:src="@drawable/add"  
+			  android:background="@color/colorAccent"  
+			  android:layout_weight="1"/>  
+</LinearLayout>
+~~~
+
+#### D. Set the LinearLayout confession_list to have a padding_horizontal of 10dp
+
+This will add a 10dp border to the left and right side of the elements inside of the layout, which looks better visually.
+~~~
+<!-- This ScrollView will hold a LinearLayout containing the confession posts. -->  
+<ScrollView  
+  android:layout_height="match_parent"  
+  android:layout_width="match_parent">  
+    <LinearLayout  
+	  android:id="@+id/confession_list"  
+	  android:layout_width="match_parent"  
+	  android:layout_height="match_parent"  
+	  android:paddingHorizontal="10dp"  
+	  android:orientation="vertical"  
+	  tools:context=".MainActivity">  
+	</LinearLayout>  
+</ScrollView>
+~~~
+
+After these all changes, your application should look like this:
+![](https://lh3.googleusercontent.com/DVzpiFbR7K1CaXS6tBALUfSIPZbfvSbhXIAd4C0ORoRfgU3B2k3Nw80qt_SEm_zrdbysU4nJAu4SUcoI5UxXzF_WBUWHXHw41oapIRZ2coaL6GWexf6aBBabvR8K2LIEhiKT69ubjhJQ0fc8hExw-jLONz3ZgZg0_20W7ThjI0snYbo9wfGHUjehLRns1aaaZPmFy-dxnZ2SlDH7dCDn35XZQWNZTFhNMGFdl5i5kkFlgJz-1xY6O5c9xeXVOwKMog8UKX1so-0G67CClCb9l9ujhbt09G2s3BEjB1XxNomorHjPEqYdWw95Ss0OV6UJjCbbE0mLen9wm1H8Z9Ej_Camrtf9qyJmmsWVvU2o5clcUd4qLB4DJO5OcWa7RGSG9iuQMh_Y_9yC7bmCViiTFHZKG-lAdABbGBZ4PRQuZv_F61rrzsDScD7oigbh2agf-g8qvUeMYPd0nlonsttlq-ic16UsO0Hc7NXzeJV9sYbGO5yS570ssLdxtT9mGdQRPu5KDUFvCSbqiIaATyyARs-AfVoNFLeT4-Jzz3EWbmmH3e9rspmUx6Nv_IPacti09FwlqbRKzoFpa7Ut0Ay862pJI78XjNQBHXq7PysvatI_zBLVlpmpXcpXDKZs5VfK-em7VPPBr72R-cS9cJFRRqQXcu4-3NLpiyG7nA1-z4oNjveQocelgDvXK3lgaClFNOWvueH6TSji46DLfWHOLrNeVBB-RG3lAdW_Z4bPIwAuoR1jtw=w2644-h1746-no)
+
 ### Coding Challenges for this Project
 
 Here are a few ways you could test your development skills and take this app further...
 
  - (Easy) Add a timestamp to when each confession was posted. 
  - (Easy) Right now the application looks fine in portrait mode, but not so great in landscape :( -- figure out how to do so! Hint: you will need to create some new layout resource files in a layout-land/ directory within res/ . 
+ - (Medium) Allow persistant data via Shared Preferences!
  - (Medium) Allow for the deletion of confessions.
  - (Medium) Create a up/down voting system (like reddit?) and sort the list by popularity of votes.
  - (Harder) Allow for replies and comments to confessions.
+ - 
 
 ## Additional Resources
 
