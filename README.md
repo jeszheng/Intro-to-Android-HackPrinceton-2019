@@ -351,6 +351,130 @@ This will add a 10dp border to the left and right side of the elements inside of
 After these all changes, your application should look like this:
 ![](https://lh3.googleusercontent.com/DVzpiFbR7K1CaXS6tBALUfSIPZbfvSbhXIAd4C0ORoRfgU3B2k3Nw80qt_SEm_zrdbysU4nJAu4SUcoI5UxXzF_WBUWHXHw41oapIRZ2coaL6GWexf6aBBabvR8K2LIEhiKT69ubjhJQ0fc8hExw-jLONz3ZgZg0_20W7ThjI0snYbo9wfGHUjehLRns1aaaZPmFy-dxnZ2SlDH7dCDn35XZQWNZTFhNMGFdl5i5kkFlgJz-1xY6O5c9xeXVOwKMog8UKX1so-0G67CClCb9l9ujhbt09G2s3BEjB1XxNomorHjPEqYdWw95Ss0OV6UJjCbbE0mLen9wm1H8Z9Ej_Camrtf9qyJmmsWVvU2o5clcUd4qLB4DJO5OcWa7RGSG9iuQMh_Y_9yC7bmCViiTFHZKG-lAdABbGBZ4PRQuZv_F61rrzsDScD7oigbh2agf-g8qvUeMYPd0nlonsttlq-ic16UsO0Hc7NXzeJV9sYbGO5yS570ssLdxtT9mGdQRPu5KDUFvCSbqiIaATyyARs-AfVoNFLeT4-Jzz3EWbmmH3e9rspmUx6Nv_IPacti09FwlqbRKzoFpa7Ut0Ay862pJI78XjNQBHXq7PysvatI_zBLVlpmpXcpXDKZs5VfK-em7VPPBr72R-cS9cJFRRqQXcu4-3NLpiyG7nA1-z4oNjveQocelgDvXK3lgaClFNOWvueH6TSji46DLfWHOLrNeVBB-RG3lAdW_Z4bPIwAuoR1jtw=w2644-h1746-no)
 
+### Step 6. Link UI Elements to Java Code and Allow for Confessions to be Posted [[link]](https://github.com/glossiercoder/Intro-to-Android-HackPrinceton-2019/commit/2bb845de4fd74b6e98b79834b58eaf3517afee13)
+#### A. Import the classes we are going to use ahead of time -- it'll make our lives easier
+~~~
+import android.os.Bundle;  
+import android.view.View;  
+import android.widget.ImageButton;  
+import android.widget.EditText;  
+import android.widget.TextView;  
+import android.widget.LinearLayout;  
+import android.widget.LinearLayout.LayoutParams;  
+import android.util.TypedValue;  
+import android.view.View.OnClickListener;  
+import android.app.AlertDialog;  
+import android.content.DialogInterface;  
+import android.content.Intent;
+~~~
+
+#### B. Reference and link these UI elements to the Java Code in MainActivity.java
+
+Create some instance variables for the EditText, ImageButton, and LinearLayout to hold the confessions.
+
+In **onCreate()** within MainActivity -- this is called at the beginning when the Activity is initialized (read more about the Android Lifecycle here) -- initialize these variables. We use **findViewById()** and the **android:id** attribute we set above to link these UI elements in the XML to our Java instance variables in onCreate().
+
+In MainActivity.java:
+~~~
+private EditText confessionEditText;  
+private ImageButton confessionPostButton;  
+private LinearLayout confessionList;  
+  
+@Override  
+protected void onCreate(Bundle savedInstanceState) {  
+    super.onCreate(savedInstanceState);  
+    setContentView(R.layout.activity_main);  
+  
+    this.confessionEditText = findViewById(R.id.confession_edit_text);  
+    this.confessionPostButton = findViewById(R.id.confession_post_button);  
+    this.confessionList = findViewById(R.id.confession_list);  
+}
+~~~
+
+#### C. Set confession_post_button to call a new method postConfession() onClick.
+
+In activity_main.xml, we set the attribute **android:onClick** to "postConfession":
+~~~
+<ImageButton  
+  android:id="@+id/confession_post_button"  
+  android:layout_width="wrap_content"  
+  android:layout_height="wrap_content"  
+  android:src="@drawable/add"  
+  android:layout_weight="1"  
+  android:background="@color/colorAccent"  
+  android:onClick="postConfession"/>
+~~~
+
+#### D. Create method postConfession()
+
+Create a method **postConfession()** that accepts a view parameter by convention, and is of type void.  We do several things in postConfession(): 
+
+ 1. Retrieve the text string inside of confessionEditText via calling getText() and toString()
+ 2. Clearing the EditText by calling setText("")
+ 3. Creating a new TextView to hold our confession, via a method createNewConfession(String confessionText) that we will implement in the next step. A [TextView](https://developer.android.com/reference/android/widget/TextView) is a user interface element that displays text to the user.
+ 4. Add this newly created TextView to the confessionsList so it will appear in our list of confessions.
+~~~
+public void postConfession(View view) {    
+    String confessionText = confessionEditText.getText().toString();  
+    confessionEditText.setText("");  
+  
+    TextView newConfession = createNewConfession(confessionText);  
+  
+    confessionList.addView(newConfession);  
+}
+~~~
+
+#### E. Add a rectangle resource drawable to res/drawable for the confession text border
+
+Add a new resource xml file under res/drawable called **rectangle.xml**, and place the following inside. This will create an orange border around every confession.
+
+~~~
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >  
+    <solid android:color="@android:color/white" />  
+    <stroke android:width="1dip" android:color="@color/colorPrimary"/>  
+</shape>
+~~~
+
+#### F. Create method createNewConfession()
+
+Create method createNewConfession() that accepts a String confessionText as an input parameter, and returns a TextView. We do several things in createNewConfession(): 
+
+ 1. Input validation -- confessionText should not be null. This is a good programming practice.
+ 2. Create a new TextView called confessionTextView.
+ 3. Set the text inside the confessionTextView to confessionText.
+ 4. Use a LinearLayout.LayoutParam object to set the width, height, and margins of the TextView.
+ 5. Give the TextView a 10dp padding on all sides/
+ 6. Set the TextView text size to 18dp.
+ 7. Set confessionTextView background to **R.drawable.rectangle** -- we added this resource in step D. 
+ 8. Return the newly created confessionTextView
+
+~~~
+private TextView createNewConfession(String confessionText) {  
+    if (confessionText == null) {  
+        throw new NullPointerException("Confession should not be null!");  
+    }  
+  
+    TextView confessionTextView = new TextView(this);  
+    confessionTextView.setText(confessionText);  
+  
+    LinearLayout.LayoutParams params =
+    	new LinearLayout.LayoutParams(
+		/* width= */ LayoutParams.MATCH_PARENT,
+		/* height= */ LayoutParams.WRAP_CONTENT);  
+    params.setMargins(10,10,10,10);  
+    confessionTextView.setLayoutParams(params);  
+  
+    confessionTextView.setPadding(10, 10, 10, 10);  
+    confessionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);  
+    confessionTextView.setBackground(getResources().getDrawable(R.drawable.rectangle));  
+  
+    return confessionTextView;  
+}
+~~~
+
+Now if you run the application, you should be able to post confessions! :)
+![](https://lh3.googleusercontent.com/W-e6atXdoKIzFwxz1FRjxPC-Qxf5qTBJyUsnlaAC_vaUeKNz-xnC4o0wF1CwEmmRu-UmySx5CeK1wD105B8GmhFb46KGDilEZReO3UYzvFjQ7kCMQmUy_u04uq-BE2dBotd6xfeYUeiFNs1grV8IVC0TeW10Xx9ghSRRhmRf-AMecnuJNTedu2K7FNVyD94q5172VLYGkuwfjKS5uf8DwOeeLz8akvVkO48fh4thhYWIBsS7GTtfjy3WW5B0hKEHI5UfO8R_J5pzYnfMMuJ77DSgd7z279sQOuZqWLZSn7c4Wz-4LiTLAbbquTBH_abiIksYyZ19QPheQv0pmatENRCc68InFcyQwAENdrLXHMpULQPkTXMGtNzOh21r_Enl8BG5Fm67KHskNE6vzdp8feAt7ZsX4qyK3BCkgNSyZNASFtVkS84n66Mkci08CFCPcaQ6cHZx35KvNQqDXmk7DP1eiGu0JsC8j9Cm-ZjCnkSRgKTLGbDDsK7SEqRLaUudufJB0QEc2npCKD3TRU3BY7N9UWX5_ILF2QkIWfyy1CSpMkuEJ5VMw5qRN02D5RwejSq2tErKXcz8p_P6931NzLQ3QeDEB6QverLR3_JZWVJmas_3bKQOEBjOOwEXhl181y1t_iciyEy1S-MC9L_Gr5lKda830Ljdcowt1gSEKL0Yzw-yAV--x0BYtUCC7FsBbVqZ1HsmkdWt44ZkCsIMbO73esqSCfp8m7tmFxQ2_mya480CPA=w2720-h1623-no)
+
 ### Coding Challenges for this Project
 
 Here are a few ways you could test your development skills and take this app further...
@@ -361,7 +485,6 @@ Here are a few ways you could test your development skills and take this app fur
  - (Medium) Allow for the deletion of confessions.
  - (Medium) Create a up/down voting system (like reddit?) and sort the list by popularity of votes.
  - (Harder) Allow for replies and comments to confessions.
- - 
 
 ## Additional Resources
 
