@@ -475,6 +475,95 @@ private TextView createNewConfession(String confessionText) {
 Now if you run the application, you should be able to post confessions! :)
 ![](https://lh3.googleusercontent.com/W-e6atXdoKIzFwxz1FRjxPC-Qxf5qTBJyUsnlaAC_vaUeKNz-xnC4o0wF1CwEmmRu-UmySx5CeK1wD105B8GmhFb46KGDilEZReO3UYzvFjQ7kCMQmUy_u04uq-BE2dBotd6xfeYUeiFNs1grV8IVC0TeW10Xx9ghSRRhmRf-AMecnuJNTedu2K7FNVyD94q5172VLYGkuwfjKS5uf8DwOeeLz8akvVkO48fh4thhYWIBsS7GTtfjy3WW5B0hKEHI5UfO8R_J5pzYnfMMuJ77DSgd7z279sQOuZqWLZSn7c4Wz-4LiTLAbbquTBH_abiIksYyZ19QPheQv0pmatENRCc68InFcyQwAENdrLXHMpULQPkTXMGtNzOh21r_Enl8BG5Fm67KHskNE6vzdp8feAt7ZsX4qyK3BCkgNSyZNASFtVkS84n66Mkci08CFCPcaQ6cHZx35KvNQqDXmk7DP1eiGu0JsC8j9Cm-ZjCnkSRgKTLGbDDsK7SEqRLaUudufJB0QEc2npCKD3TRU3BY7N9UWX5_ILF2QkIWfyy1CSpMkuEJ5VMw5qRN02D5RwejSq2tErKXcz8p_P6931NzLQ3QeDEB6QverLR3_JZWVJmas_3bKQOEBjOOwEXhl181y1t_iciyEy1S-MC9L_Gr5lKda830Ljdcowt1gSEKL0Yzw-yAV--x0BYtUCC7FsBbVqZ1HsmkdWt44ZkCsIMbO73esqSCfp8m7tmFxQ2_mya480CPA=w2720-h1623-no)
 
+### Step 7. Dialog and Share Intents [[link]](https://github.com/glossiercoder/Intro-to-Android-HackPrinceton-2019/commit/e099bf8ab8a7bba23accd1a07b56557e7d15df6d)
+
+As shown in the demo video, we want each confession to be clickable. When the user taps the confession, a [Dialog](https://developer.android.com/guide/topics/ui/dialogs) will pop up with the confession text and give the user the option to (1) share the confession text, or (2) exit the dialog.
+
+#### A. Create a ConfessionsOnClickListener
+
+We create a click listener class for the confession text views that implements  [View.OnClickListener]. (https://developer.android.com/reference/android/view/View.OnClickListener). We store the confessionText string as a private instance variable due to access permissions (if you keep it as a local variable, you will probably see that you run into access issues).
+
+In the onClick() method we do the following:
+
+ 1. Check to make sure that the view is of type TextView, since we typecast it to a TextView. In the event that the view for some reason is NOT a TextView, onClick simply does nothing. This is an optional, but good form of input validation to have.
+ 2. Obtain and set the confessionText from the confessionTextView via getText() and toString()
+ 3. Create a new AlertDialog.Builder and set its message to confessionText.
+ 4. Obtain the dialog by calling builder.create();
+ 5. Show the dialog.
+~~~
+private class ConfessionsOnClickListener implements OnClickListener {  
+  
+    private AlertDialog.Builder builder;  
+    private String confessionText;  
+  
+    @Override 
+    public void onClick(View view) { 
+	    if (!(view instanceof TextView)) {  
+		    return;  
+		}
+        TextView confessionTextView = (TextView) view;  
+        confessionText = confessionTextView.getText().toString();  
+  
+        builder = new AlertDialog.Builder(view.getContext());
+        builder.setMessage(confessionText) .setTitle("Confession");  
+ 
+        AlertDialog dialog = builder.create();  
+        dialog.show();  
+    }  
+}
+~~~
+
+#### B. Introduce Share Intent
+
+Right now, the dialog will appear and show the confession, but there will not yet be buttons that give us a set of actions to choose from. Let's add those in. First, let's add in the capability to share messages. To do so, we'll need to use something called an Intent.
+
+An [Intent](https://developer.android.com/reference/android/content/Intent) is an abstract description of an operation to be performed. An Intent provides a facility for performing late runtime binding between the code in different applications. Its most significant use is in the launching of activities, where it can be thought of as the glue between activities. It is basically a passive data structure holding an abstract description of an action to be performed.
+
+In our **onClick()** before we create the dialog using the builder we do the following:
+
+1. We call builder.setPositiveButton(), where the first parameter is the label of the button "Share Confession", and the second parameter is a new DialogInterface.OnClickListener.
+2. We start to fill in the onClick() method of the new DialogInterface.OnClickListener by creating a new Intent object named something such as sharingIntent. This intent is of type ACTION_SEND. There are various Intent types such as Email, Uri Request, Location Request etc.
+3. Set the Intent type to "text/plain"
+4. By convention, we need to include a subject EXTRA_SUBJECT via putExtra(). Let's include "Subject Here"
+5. Next, we include confessionText via putExtra() under the EXTRA_TEXT category.
+6. Finally, we use startActivity() that will launch the Intent. The text prompt we include is the string "Share Using."
+~~~
+builder.setPositiveButton("Share Confession", new DialogInterface.OnClickListener() {  
+    @Override  
+  public void onClick(DialogInterface dialog, int id) {  
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);  
+        sharingIntent.setType("text/plain");  
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");  
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, confessionText);  
+        startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+    }  
+});
+~~~
+
+#### D. Add in cancel option in Dialog.
+
+We use builder.setNegativeButton() to create an onClick() listener that dismisses the dialog.
+~~~
+builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {  
+    @Override  
+  public void onClick(DialogInterface dialog, int id) {  
+        dialog.dismiss();  
+    }  
+});
+~~~
+
+#### E. Link ConfessionsOnClickListener to confessionTextView.
+
+In createNewConfession() before returning confessionTextView, make the textView clickable and set the onClickListener to ConfessionsOnClickListener.
+~~~
+confessionTextView.setClickable(true);  
+confessionTextView.setOnClickListener(new ConfessionsOnClickListener());
+~~~
+
+The application should now look like this:
+![](https://lh3.googleusercontent.com/KP5hhAzUt5PpIcnnsRmrunjrkHhXJPgrRW-L8i_d8vXB3sxl2xQdDgiXr25fWmivAhrhSg6-wGtwnoQx9ShsgA1ycOaAZ8AmJosWGh684Mg5tJBIjjnb-3_JZBOFsDDbjcpklhG225wQuQvIAVHODwlg8NjwonzrBwpmq4O0STZu8HmrA_sexZUGbwb4N9dxyNpXaenJq2j_oDjh-OL_HhACJ2tKR3kHT8_ir_aMfUKdyUkaSSmTeCgnVVBMOBdJPG_KUROgFTCLyY9DGh9flnswF91RZey_iYi9RoJ2gxH--vDpgdo_4fedBc6ufimEQCCZA49FjOZJTTeKeQdIB65uYdXeDWkmkTZ536VIErZtuKTENEbuy9rOtSVq_6_s3_geetcxq_5QBO57xBzmBmiwyPFxLZPByAXMdpCW4NROsVyyOMkxJD6qjlUh3x8jtsclleXg2RHnn5Gh0Eu7U5BBR3bxqQNeB6JZD9cTpvfuOXMQXXheDGEjc3TKJWYq7n-Fq1JHF3pnZ1rFUjTN2XZHnnPoUBP0PwgYZKt1PqbFIqjrcu2cbVspzc5aLscXGMiUzUiECd7JJUsyn6OtW6sbG29R7Vx08lIIvIsgMITY8S2KPYE0gDNWYF1-XAvm7D8FA4cB52ThooupO3_w_Tz-ILiEkVFjb8Wkez7wvJqdNkCxNA7igp9yBuPeCmaW1ljrK3WoeXGIk-ypUeFjAP_BwmPWruNErBcnbUCfm4TnLGRVBw=w2582-h1766-no)
+
+
 ### Coding Challenges for this Project
 
 Here are a few ways you could test your development skills and take this app further...
