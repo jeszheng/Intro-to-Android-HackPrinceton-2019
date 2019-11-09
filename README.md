@@ -563,6 +563,48 @@ confessionTextView.setOnClickListener(new ConfessionsOnClickListener());
 The application should now look like this:
 ![](https://lh3.googleusercontent.com/KP5hhAzUt5PpIcnnsRmrunjrkHhXJPgrRW-L8i_d8vXB3sxl2xQdDgiXr25fWmivAhrhSg6-wGtwnoQx9ShsgA1ycOaAZ8AmJosWGh684Mg5tJBIjjnb-3_JZBOFsDDbjcpklhG225wQuQvIAVHODwlg8NjwonzrBwpmq4O0STZu8HmrA_sexZUGbwb4N9dxyNpXaenJq2j_oDjh-OL_HhACJ2tKR3kHT8_ir_aMfUKdyUkaSSmTeCgnVVBMOBdJPG_KUROgFTCLyY9DGh9flnswF91RZey_iYi9RoJ2gxH--vDpgdo_4fedBc6ufimEQCCZA49FjOZJTTeKeQdIB65uYdXeDWkmkTZ536VIErZtuKTENEbuy9rOtSVq_6_s3_geetcxq_5QBO57xBzmBmiwyPFxLZPByAXMdpCW4NROsVyyOMkxJD6qjlUh3x8jtsclleXg2RHnn5Gh0Eu7U5BBR3bxqQNeB6JZD9cTpvfuOXMQXXheDGEjc3TKJWYq7n-Fq1JHF3pnZ1rFUjTN2XZHnnPoUBP0PwgYZKt1PqbFIqjrcu2cbVspzc5aLscXGMiUzUiECd7JJUsyn6OtW6sbG29R7Vx08lIIvIsgMITY8S2KPYE0gDNWYF1-XAvm7D8FA4cB52ThooupO3_w_Tz-ILiEkVFjb8Wkez7wvJqdNkCxNA7igp9yBuPeCmaW1ljrK3WoeXGIk-ypUeFjAP_BwmPWruNErBcnbUCfm4TnLGRVBw=w2582-h1766-no)
 
+### Step 8. Finishing Touches -- Cleanup of Strings.xml  
+
+Finally, we are going to do some cleanup of the app.
+
+#### A. Place all string resources in activity_main.xml into strings.xml
+
+In Android, it is convention to store all strings in the application as variables in a strings.xml file. This is good practice -- if you need to change a string, you can do so in this one place rather than everywhere that this string is used. Also, having the strings in strings.xml allows for additional features such as location translation and  [Talkback screenreader for accessibility](https://support.google.com/accessibility/android/answer/6006564?hl=en)  features.
+
+We create variables in **strings.xml** for each static string we used in the project. Afterwards, strings.xml should look like this:
+~~~
+<resources>  
+    <string name="app_name">TigerConfessions</string>  
+    <string name="enter_confession_text">Enter your confession here...</string>  
+    <string name="confession_header">Confession</string>  
+    <string name="share_confession">Share Confession</string>  
+    <string name="subject_here">Subject Here</string>  
+    <string name="share_using">Share Using</string>  
+    <string name="cancel">Cancel</string>  
+</resources>
+~~~
+
+In the XML, remove direct mentions to the string itself and reference the variable instead. For instance, confession_edit_text should look like this:
+~~~
+<EditText  
+  android:id="@+id/confession_edit_text"  
+  android:layout_width="wrap_content"  
+  android:layout_height="wrap_content"  
+  android:inputType="textMultiLine"  
+  android:hint="@string/enter_confession_text"  
+  android:layout_weight="5"/>
+~~~
+Similarly, in MainActivity.java remove direct mentions to the string itself and reference the variable instead. You will need to use **getResources().getString(int resId),** where resId is in the form of R.string.[id]. For example, instead of 
+~~~
+builder.setMessage(confessionText).setTitle("Confession");
+~~~
+we write:
+~~~
+builder.setMessage(confessionText).setTitle(getResources().getString(R.string.confession_header));
+~~~
+For the complete set of changes, see the git commit.
+
+While this doesn't result in visible changed to the end product, it helps to foster good Android programming habits :)
 
 ### Coding Challenges for this Project
 
