@@ -606,19 +606,27 @@ For the complete set of changes, see the git commit.
 
 While this doesn't result in visible changed to the end product, it helps to foster good Android programming habits :)
 
-### Coding Challenges for this Project
+## Adding Firebase to the Application (Optional)
+
+### Step 1. Firebase in Android Part 1
+TODO
+
+### Step 2 Firebase in Android Part 2
+TODO
+
+## Additional Coding Challenges for this Project
 
 Here are a few ways you could test your development skills and take this app further...
 
- - (Easy) Add a timestamp to when each confession was posted. 
- - (Easy) Right now the application looks fine in portrait mode, but not so great in landscape :( -- figure out how to do so! Hint: you will need to create some new layout resource files in a layout-land/ directory within res/ . 
- - (Medium) Allow persistant data via Shared Preferences!
- - (Medium) Allow for the deletion of confessions.
- - (Medium) Create a up/down voting system (like reddit?) and sort the list by popularity of votes.
- - (Harder) Allow for replies and comments to confessions.
+-   (Easy) Add a timestamp to when each confession was posted.
+-   (Easy) Right now the application looks fine in portrait mode, but not so great in landscape :( -- figure out how to do so! Hint: you will need to create some new layout resource files in a layout-land/ directory within res/ .
+-   (Medium) Allow persistant data via Shared Preferences!
+-   (Medium) Allow for the deletion of confessions.
+-   (Medium) Create a up/down voting system (like reddit?) and sort the list by popularity of votes.
+-   (Harder) Allow for replies and comments to confessions.
 
-## Additional Resources
 
+## Additional Resources for Android
 The codelab I recommend the most for learning about Android in-depth is the one provided by Google themselves: [Android Developer Fundamentals](https://codelabs.developers.google.com/android-training/). It is well-documented, maintained and kept-up-to-date, and even has a series of accompanying [video lectures](https://www.youtube.com/playlist?list=PLlyCyjh2pUe9wv-hU4my-Nen_SvXIzxGB). 
 
 A select list of interesting tutorials:
