@@ -13,12 +13,18 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText confessionEditText;
     private ImageButton confessionPostButton;
     private LinearLayout confessionList;
+    private DatabaseReference mDatabase;
+    private int numPosts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         this.confessionEditText = findViewById(R.id.confession_edit_text);
         this.confessionPostButton = findViewById(R.id.confession_post_button);
         this.confessionList = findViewById(R.id.confession_list);
+        this.mDatabase = FirebaseDatabase.getInstance().getReference();
+        this.numPosts = 0;
     }
 
     public void postConfession(View view) {
@@ -42,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
         TextView newConfession = createNewConfession(confessionText);
 
         confessionList.addView(newConfession);
+
+        // Database Code
+        // Use the numPosts as the identifying index in the database
+        mDatabase.child("posts").child(String.valueOf(numPosts)).setValue(confessionText);
+        // Increment numPosts so we have a unique identifier for each post
+        numPosts++;
     }
 
     private TextView createNewConfession(String confessionText) {
