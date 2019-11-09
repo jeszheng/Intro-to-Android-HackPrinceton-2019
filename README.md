@@ -165,15 +165,15 @@ Resulting activity_main.xml:
 	  <ScrollView  
 		  android:layout_height="match_parent"
 		  android:layout_width="match_parent">  
-		  <!-- This LinearLayout will hold the confession posts. ->
+		  <!-- This LinearLayout will hold the confession posts. -->
 		  <LinearLayout  
 			  android:id="@+id/confession_list"  
 			  android:layout_width="match_parent"  
 			  android:layout_height="match_parent"  
 			  android:orientation="vertical"  
 			  tools:context=".MainActivity">  
-        </LinearLayout>  
-    </ScrollView>  
+		</LinearLayout>  
+	    </ScrollView>  
 </LinearLayout>
 ~~~
 
