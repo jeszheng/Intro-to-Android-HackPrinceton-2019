@@ -608,7 +608,7 @@ While this doesn't result in visible changed to the end product, it helps to fos
 
 ## Adding Firebase to the Application (Optional)
 
-### Step 1. Firebase in Android Part 1 [[link]](https://github.com/glossiercoder/Intro-to-Android-HackPrinceton-2019/commit/1096eaf897907269bb7c059ff6a76f88f1440674)
+### Step 1. Firebase in Android: Setting up the Database [[link]](https://github.com/glossiercoder/Intro-to-Android-HackPrinceton-2019/commit/1096eaf897907269bb7c059ff6a76f88f1440674)
 #### A. Sign into your Google account using the top right icon in Android Studio.
 
 ![](https://lh3.googleusercontent.com/2ZD97eGAvA5Hy1UN6yHqLNFPLkd5lrJ89ZgEqjSl2XYzJX1XFk6Or1s9JeV2CAecrEXekqK5owivSSvnK5CYBWRO4NAQkN_4QrJZg4MLh22p46XLn3EReOcOW_Fh6oMvniRseA8azZhNvte0g7HPdTNPRzLZvrJQN1ho7PzSWwjDD69n9vKCxaOilRD8j4AOg42OhenoyxGrn3ExqGFz6tj_1oA8vHH3Pf8vY5lVehScSIew1Kgk03kjIiasPm6vaTQrJcdVw8OMvoRihFmNffJ8ghGPzN5OmHBG16bJi6C7XyN-DG6TP35S2ZHZVS7E2vwM36LB4EUbX7aCojqjsUXOlHWsPAO6RG8s4FyAz5wflqqaLM07GPOwReNCZJa5U_8HYQ5n9768_mLKGxBd6aFr0fxgD3duyXXQd5v6c5wDaL4o66ycpwv0NdDlNYP1dJexLhnFd7G3hEEh0BJIcOb6OeGb6xonAJfiIKbgfh-ZNIa5uhFfcGa863w9vR_P1g-KsWnUJ_UK4H7brP44vl4YgsKjTFbY45LA7VAkT_0E0s023o5Ob2xPYjtH9CL_HRLXO6gBnOjGaUkShDrKu4N0otpHU5a9tNravzqyxgxPdkna-5gIkDyjbPVEbuodT4lKwBQVuRJXU-Tv3ORJcGD7_hQiP0oznu_8bgUWfAKReLKWiTxCI-MS8_N3-bUgGcYokXyOjCGvzXibK388aTXCgfTeqilGEZ7fUK6T5U3RaWD-tw=w2401-h1071-no)
@@ -644,8 +644,68 @@ Now navigate back to Android Studio and click the button "Add the Realtime Datab
 
 This step should be already handled for you. Please signal me if you run into an error.
 
-### Step 2 Firebase in Android Part 2
-TODO
+### Step 2. Firebase in Android: Reading and Writing Data [[link]](https://github.com/glossiercoder/Intro-to-Android-HackPrinceton-2019/commit/8b671a099000230322c47640ce63522db70ab361)
+
+#### A. Create an instance variable reference to the database in MainActivity.java
+
+~~~
+private DatabaseReference mDatabase;
+~~~
+and initialize it in onCreate() in MainActivity.java:
+~~~
+this.mDatabase = FirebaseDatabase.getInstance().getReference();
+~~~ 
+#### B. Writing to the database
+Let's say we want to store all of the confessions. In postConfession() we can create a section in our database called "posts" and assign confessionText to a child of the database "posts" section. For this, we need to have some sort of an identifying index. Here, I am using the number of Posts (numPosts) as the index.
+
+Create an instance variable **numPosts** of type int, and initialize it in **onCreate()** to value 0.
+~~~
+// Use the numPosts as the identifying index in the database  
+mDatabase.child("posts").child(String.valueOf(numPosts)).setValue(confessionText);  
+// Increment numPosts so we have a unique identifier for each post  
+numPosts++;
+~~~
+
+#### C. Reading from the database
+
+The following is a manufactured scenario about how we would get updates from our realtime database.
+
+Let's pretend you have a fully functioning app, and we want to update  some EditText whenever there's an update on the database, in real time. This means that if the  text field ref value changes from "Hello, World!" to "Hi Mom!", our EditText would pick up that change immediately and populate our EditText with that new value.
+
+For this, we want to add some sort of an event listener to our database reference, this way we can be notified when the database value changes. Luckily, Firebase has a method for this (addValueEventListener). We'll also add a ValueEventListener which will give us some methods we can override to do our bidding  😈! The following is the change we want to add:
+
+```
+myRef.addValueEventListener(new ValueEventListener() { 
+...
+});
+
+```
+
+Now we just need to use some methods (specifically onDataChange, and onCancelled) in order to specify what we do when the data changes, or we failed to read the data. Our code will finally look like the following:
+
+```
+myRef.addValueEventListener(new ValueEventListener() {  
+    @Override  
+  public void onDataChange(DataSnapshot dataSnapshot) {  
+        // This method is called once with the initial value and again  
+		// whenever data at this location is updated.  String value = dataSnapshot.getValue(String.class);  
+	    emailEditText.setText(value); // example of data flow  
+	    Log.d("MyRefDataChanged", "Value is: " + value);  
+  }  
+  
+    @Override  
+  public void onCancelled(DatabaseError error) {  
+        // Failed to read value  
+	    Log.w("MyRefFailedToReadValue", "Failed to read value.", error.toException());  
+  }  
+});
+
+```
+
+Inside of onDataChange, we get a snapshot of the data, and from which, we'll be getting the new string value that the reference contains.
+
+If you run your app and check out the firebase, you can edit the message reference value and see the value change on your android app!
+
 
 ## Additional Coding Challenges for this Project
 
