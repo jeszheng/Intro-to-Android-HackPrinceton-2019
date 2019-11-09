@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "368320897997",
+    "firebase_url": "https://tigerconfessions-394fe.firebaseio.com",
+    "project_id": "tigerconfessions-394fe",
+    "storage_bucket": "tigerconfessions-394fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368320897997:android:8dce3bfc816eadb3981a84",
+        "android_client_info": {
+          "package_name": "com.example.tigerconfessions"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368320897997-aifjt582mna98feupp884gjm2mh2nb4c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tigerconfessions",
+            "certificate_hash": "d4a68a3b7ccb502f2fea412b37d4cde00c09f38f"
+          }
+        },
+        {
+          "client_id": "368320897997-799kmamrfbf72uvtklag47vqqogr9ecv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMkJ8nOJs6-svNvF5IHoJ3pHSJOJHcZpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368320897997-799kmamrfbf72uvtklag47vqqogr9ecv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
