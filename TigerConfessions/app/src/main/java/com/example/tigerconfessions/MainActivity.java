@@ -81,21 +81,21 @@ public class MainActivity extends AppCompatActivity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
-            builder.setMessage(confessionText) .setTitle("Confession");
+            builder.setMessage(confessionText).setTitle(getResources().getString(R.string.confession_header));
 
 
-            builder.setPositiveButton("Share Confession", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(getResources().getString(R.string.share_confession), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
                     Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                     sharingIntent.setType("text/plain");
-                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getResources().getString(R.string.subject_here));
                     sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, confessionText);
-                    startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+                    startActivity(Intent.createChooser(sharingIntent,  getResources().getString(R.string.share_using)));
                 }
             });
 
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(getResources().getString(R.string.share_using), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
                     dialog.dismiss();

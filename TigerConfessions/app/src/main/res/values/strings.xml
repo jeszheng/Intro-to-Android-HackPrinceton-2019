@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TigerConfessions</string>
+    <string name="enter_confession_text">Enter your confession here...</string>
+    <string name="confession_header">Confession</string>
+    <string name="share_confession">Share Confession</string>
+    <string name="subject_here">Subject Here</string>
+    <string name="share_using">Share Using</string>
+    <string name="cancel">Cancel</string>
 </resources>
